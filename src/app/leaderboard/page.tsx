@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import { ChevronRight, Home as HomeIcon, Star, Trophy } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function LeaderboardPage() {
   return (
@@ -31,7 +32,7 @@ export default function LeaderboardPage() {
         {/* Leaderboard Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Rank 1 - MindsDB */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 relative">
+          <Link href="/servers/mindsdb" className="bg-white rounded-lg border border-gray-200 p-6 relative block hover:shadow-sm transition-shadow">
             <div className="absolute -top-3 -left-3 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mr-4">
@@ -47,10 +48,10 @@ export default function LeaderboardPage() {
             </div>
             <p className="text-gray-600 mb-4">Build AI applications that can learn and answer questions over large-scale federated...</p>
             <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Database Management</span>
-          </div>
+          </Link>
 
           {/* Rank 2 - Context7 */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 relative">
+          <Link href="/servers/context7" className="bg-white rounded-lg border border-gray-200 p-6 relative block hover:shadow-sm transition-shadow">
             <div className="absolute -top-3 -left-3 w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4">
@@ -66,10 +67,10 @@ export default function LeaderboardPage() {
             </div>
             <p className="text-gray-600 mb-4">Fetches up-to-date documentation and code examples for LLMs and AI code editors...</p>
             <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Learning & Documentation</span>
-          </div>
+          </Link>
 
           {/* Rank 3 - GPT Researcher */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 relative">
+          <Link href="/servers/gpt-researcher" className="bg-white rounded-lg border border-gray-200 p-6 relative block hover:shadow-sm transition-shadow">
             <div className="absolute -top-3 -left-3 w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 bg-gray-300 rounded-lg flex items-center justify-center mr-4 overflow-hidden">
@@ -85,10 +86,10 @@ export default function LeaderboardPage() {
             </div>
             <p className="text-gray-600 mb-4">Conducts in-depth web and local research on any topic, generating comprehensive...</p>
             <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Data Science & ML</span>
-          </div>
+          </Link>
 
           {/* Rank 4 - GitHub */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 relative">
+          <Link href="/servers/github" className="bg-white rounded-lg border border-gray-200 p-6 relative block hover:shadow-sm transition-shadow">
             <div className="absolute -top-3 -left-3 w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mr-4">
@@ -104,10 +105,10 @@ export default function LeaderboardPage() {
               </div>
             </div>
             <p className="text-gray-600 mb-4">Enables advanced automation and interaction capabilities with GitHub APIs for developers...</p>
-          </div>
+          </Link>
 
           {/* Rank 5 - Task Master */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 relative">
+          <Link href="/servers/task-master" className="bg-white rounded-lg border border-gray-200 p-6 relative block hover:shadow-sm transition-shadow">
             <div className="absolute -top-3 -left-3 w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-white font-bold text-sm">5</div>
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center mr-4 overflow-hidden">
@@ -122,10 +123,10 @@ export default function LeaderboardPage() {
               </div>
             </div>
             <p className="text-gray-600 mb-4">Streamline AI-driven development workflows by automating task management with Claude.</p>
-          </div>
+          </Link>
 
           {/* Rank 6 - Playwright */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 relative">
+          <Link href="/servers/playwright" className="bg-white rounded-lg border border-gray-200 p-6 relative block hover:shadow-sm transition-shadow">
             <div className="absolute -top-3 -left-3 w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-white font-bold text-sm">6</div>
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 bg-white border border-gray-200 rounded-lg flex items-center justify-center mr-4">
@@ -145,7 +146,7 @@ export default function LeaderboardPage() {
               </div>
             </div>
             <p className="text-gray-600 mb-4">Automates browser interactions for Large Language Models (LLMs) using Playwright.</p>
-          </div>
+          </Link>
         </div>
       </main>
     </div>
