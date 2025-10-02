@@ -37,10 +37,10 @@ export default function Header() {
           {/* Right side buttons */}
           <div className="flex items-center space-x-4">
             <button className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Submit ACP</button>
-            <button className="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg text-sm font-medium flex items-center">
+            <a href="/power-your-agents" className="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg text-sm font-medium flex items-center">
               <Zap className="w-4 h-4 mr-2" />
               Power Your Agents
-            </button>
+            </a>
             <button className="p-2 text-gray-500 hover:text-gray-900" aria-label="Language">
               <Globe className="w-5 h-5" />
             </button>
