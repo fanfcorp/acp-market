@@ -1,32 +1,8 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Features
-
-- 🎯 **ACP Market** - Browse and discover AI Control Plane servers
-- 📝 **Waitlist System** - Collect user registrations with PostgreSQL database
-- 📊 **Admin Dashboard** - View and export waitlist entries
-- 🎨 **Modern UI** - Built with Tailwind CSS
-
 ## Getting Started
 
-### Quick Setup
-
-1. **Install dependencies:**
-```bash
-npm install
-```
-
-2. **Set up the database:**
-```bash
-# Copy .env.example and configure your database
-cp .env.example .env
-
-# Edit .env with your DATABASE_URL and ADMIN_API_KEY
-# Then run migrations:
-npm run db:migrate
-```
-
-3. **Run the development server:**
+First, run the development server:
 
 ```bash
 npm run dev
@@ -40,34 +16,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Database Management
-
-```bash
-# View database in browser
-npm run db:studio
-
-# Create migrations after schema changes
-npm run db:migrate
-
-# Deploy migrations to production
-npm run db:migrate:deploy
-
-# Reset database
-npm run db:reset
-```
-
-## Waitlist Database
-
-The waitlist form at `/power-your-agents` stores submissions in a PostgreSQL database.
-
-**Quick Start:**
-- See [QUICKSTART.md](./QUICKSTART.md) for 3-step setup
-- See [WAITLIST_DATABASE_SETUP.md](./WAITLIST_DATABASE_SETUP.md) for detailed documentation
-
-**Key Pages:**
-- `/power-your-agents` - Public waitlist form
-- `/admin/waitlist` - Admin dashboard (requires API key)
-- `/api/waitlist` - API endpoint for submissions
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

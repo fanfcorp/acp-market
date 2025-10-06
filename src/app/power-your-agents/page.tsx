@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import WaitlistForm from "@/components/WaitlistForm";
 
 export default function PowerYourAgentsPage() {
   return (
@@ -26,22 +27,7 @@ export default function PowerYourAgentsPage() {
           <div className="bg-white border border-gray-200 rounded-md p-6 max-w-2xl mx-auto">
             <h2 className="text-lg font-semibold mb-2">Join the Waitlist</h2>
             <p className="text-sm text-gray-600 mb-4">Be the first to know when we launch!</p>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <input type="email" placeholder="you@example.com" className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">What tools do your agents need most?</label>
-                <textarea placeholder="Tell us about the tools you&apos;d like to integrate (optional)" className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm h-24 focus:outline-none focus:ring-2 focus:ring-gray-900" />
-                <p className="mt-2 text-xs text-gray-500">This helps us prioritize integrations for our launch.</p>
-              </div>
-              <label className="flex items-start gap-2 text-xs text-gray-600">
-                <input type="checkbox" className="mt-0.5" />
-                I agree to receive product updates and announcements via email. You can unsubscribe at any time.
-              </label>
-              <button type="submit" className="w-full bg-gray-900 text-white rounded-md py-2 text-sm hover:bg-gray-800">Join Waitlist</button>
-            </form>
+            <WaitlistForm />
           </div>
         </section>
       </main>
