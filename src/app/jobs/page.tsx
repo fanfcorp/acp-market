@@ -1,7 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
-import { Building2, MapPin, Briefcase, Clock } from 'lucide-react';
+import { Building2, MapPin, Briefcase } from 'lucide-react';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -121,9 +122,11 @@ export default async function JobsPage() {
                   {/* Company Logo */}
                   {job.companyLogoUrl && (
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={job.companyLogoUrl}
                         alt={`${job.companyName} logo`}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 rounded object-contain bg-white border border-gray-200"
                       />
                     </div>

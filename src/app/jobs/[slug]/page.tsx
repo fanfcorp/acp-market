@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import { Building2, MapPin, Briefcase, ExternalLink, Share2 } from 'lucide-react';
 
@@ -103,9 +104,11 @@ export default async function JobDetailPage({ params }: { params: { slug: string
 
                 {job.companyLogoUrl && (
                   <div className="flex-shrink-0">
-                    <img
+                    <Image
                       src={job.companyLogoUrl}
                       alt={`${job.companyName} logo`}
+                      width={96}
+                      height={96}
                       className="w-24 h-24 rounded-lg object-contain bg-white border border-gray-200"
                     />
                   </div>

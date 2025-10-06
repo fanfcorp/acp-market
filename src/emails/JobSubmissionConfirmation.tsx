@@ -123,7 +123,7 @@ export const JobSubmissionConfirmationEmail: React.FC<JobSubmissionConfirmationE
       {/* Info Box */}
       <div style={{ backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', padding: '16px', borderRadius: '8px', marginBottom: '30px' }}>
         <p style={{ fontSize: '14px', color: '#1e40af', margin: '0', lineHeight: '1.5' }}>
-          <strong>📧 Email Notification:</strong> We'll send you another email when your job is approved and goes live.
+          <strong>📧 Email Notification:</strong> We&apos;ll send you another email when your job is approved and goes live.
         </p>
       </div>
 

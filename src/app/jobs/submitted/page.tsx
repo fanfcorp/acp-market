@@ -74,7 +74,7 @@ export default function JobSubmittedPage() {
             <div>
               <h3 className="font-medium text-gray-900 mb-1">Email Notification</h3>
               <p className="text-sm text-gray-700">
-                We'll send you an email confirmation at the address you provided when your job is approved and goes live.
+                We&apos;ll send you an email confirmation at the address you provided when your job is approved and goes live.
               </p>
             </div>
           </div>

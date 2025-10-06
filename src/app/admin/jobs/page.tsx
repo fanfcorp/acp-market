@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/Header';
 import Link from 'next/link';
 
@@ -25,7 +25,7 @@ export default function AdminJobsPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [statusFilter, setStatusFilter] = useState('all');
 
-  const fetchJobs = async (key: string) => {
+  const fetchJobs = useCallback(async (key: string) => {
     setLoading(true);
     setError(null);
 
@@ -51,7 +51,7 @@ export default function AdminJobsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [statusFilter]);
 
   useEffect(() => {
     const storedKey = sessionStorage.getItem('adminApiKey');
@@ -61,7 +61,7 @@ export default function AdminJobsPage() {
     } else {
       setLoading(false);
     }
-  }, [statusFilter]);
+  }, [statusFilter, fetchJobs]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
