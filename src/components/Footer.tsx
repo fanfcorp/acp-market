@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="text-xl font-bold text-gray-900">ACP Market</span>
             </div>
             <p className="text-sm text-gray-600">
-              The marketplace for AI Control Plane servers and professional services
+              Powering the future of commerce with AI-driven automation and intelligent sales tools
             </p>
           </div>
 
