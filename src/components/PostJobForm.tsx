@@ -25,6 +25,7 @@ export default function PostJobForm() {
     contactEmail: '',
     companyWebsite: '',
     tags: [] as string[],
+    listingType: 'standard' as 'standard' | 'featured',
   });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -33,7 +34,8 @@ export default function PostJobForm() {
     setMessage(null);
 
     try {
-      const response = await fetch('/api/jobs', {
+      // Create Stripe checkout session for payment
+      const response = await fetch('/api/jobs/checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,10 +46,17 @@ export default function PostJobForm() {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage({ type: 'success', text: 'Job posted successfully! Redirecting...' });
-        setTimeout(() => {
-          router.push('/jobs/submitted');
-        }, 1500);
+        if (data.checkoutUrl) {
+          // Redirect to Stripe checkout
+          setMessage({ type: 'success', text: 'Redirecting to payment...' });
+          window.location.href = data.checkoutUrl;
+        } else {
+          // Free listing - no payment needed
+          setMessage({ type: 'success', text: 'Job posted successfully! Redirecting...' });
+          setTimeout(() => {
+            router.push('/jobs/submitted');
+          }, 1500);
+        }
       } else {
         setMessage({ type: 'error', text: data.error || 'Something went wrong. Please try again.' });
       }
@@ -367,31 +376,82 @@ export default function PostJobForm() {
             📝 Listing Type
           </h2>
           
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-2">Standard Listing - Free</h3>
-            <p className="text-sm text-gray-700 mb-4">
-              Your job will be posted for 30 days and reviewed before going live.
-            </p>
-            <ul className="space-y-2 text-sm text-gray-700">
-              <li className="flex items-start gap-2">
-                <span className="text-green-600 mt-0.5">✓</span>
-                <span>Listed on the jobs page</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600 mt-0.5">✓</span>
-                <span>30-day listing duration</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600 mt-0.5">✓</span>
-                <span>Reach 100,000+ monthly visitors</span>
-              </li>
-            </ul>
+          <div className="space-y-4">
+            {/* Standard Listing */}
+            <label className={`block cursor-pointer ${formData.listingType === 'standard' ? 'ring-2 ring-blue-600' : ''}`}>
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="radio"
+                    name="listingType"
+                    value="standard"
+                    checked={formData.listingType === 'standard'}
+                    onChange={handleChange}
+                    className="mt-1"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-baseline gap-2 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900">Standard Listing</h3>
+                    </div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">$49</div>
+                    <p className="text-sm text-gray-700 mb-4">
+                      Your job will appear in the main job feed
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            {/* Featured Listing */}
+            <label className={`block cursor-pointer ${formData.listingType === 'featured' ? 'ring-2 ring-purple-600' : ''}`}>
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-6">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="radio"
+                    name="listingType"
+                    value="featured"
+                    checked={formData.listingType === 'featured'}
+                    onChange={handleChange}
+                    className="mt-1"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-baseline gap-2 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900">Featured Listing</h3>
+                      <span className="text-lg">✨</span>
+                    </div>
+                    <div className="text-2xl font-bold text-purple-600 mb-2">$129 for 30 days</div>
+                    <p className="text-sm text-gray-700 mb-4">
+                      Highlighted at the top with premium visibility for 30 days
+                    </p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-0.5">✓</span>
+                        <span>Premium visibility at top of listings</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-0.5">✓</span>
+                        <span>Highlighted with special badge</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-0.5">✓</span>
+                        <span>Featured in newsletter</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-0.5">✓</span>
+                        <span>3x more views on average</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </label>
           </div>
 
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-2">Featured Listing - Coming Soon</h3>
+          {/* Payment Notice */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-start gap-3">
+            <span className="text-xl">ℹ️</span>
             <p className="text-sm text-gray-700">
-              Premium placement and extended visibility (contact us for details)
+              You will be redirected to Stripe to complete the payment. Your job will be published immediately after successful payment.
             </p>
           </div>
         </div>
@@ -421,9 +481,14 @@ export default function PostJobForm() {
           <button
             type="submit"
             disabled={isSubmitting || !formData.jobTitle || !formData.companyName || !formData.contactEmail}
-            className="px-6 py-2.5 bg-gray-900 text-white rounded-md text-sm font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-2.5 bg-gray-900 text-white rounded-md text-sm font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Job Posting'}
+            {isSubmitting ? 'Processing...' : (
+              <>
+                <span>💳</span>
+                <span>Proceed to Payment</span>
+              </>
+            )}
           </button>
         )}
       </div>

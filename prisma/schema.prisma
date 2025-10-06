@@ -50,9 +50,16 @@ model Job {
   tags            String[] // e.g., ["MCP", "AI", "LLM"]
   
   // Status & Publishing
-  status          String   @default("pending") // pending, approved, published, expired
+  status          String   @default("pending") // pending, payment_pending, approved, published, expired
   featured        Boolean  @default(false)
   expiresAt       DateTime?
+  
+  // Payment
+  listingType     String   @default("standard") // standard, featured
+  paymentStatus   String   @default("unpaid") // unpaid, paid, refunded
+  paymentAmount   Int?     // Amount in cents
+  stripeSessionId String?
+  stripePaymentId String?
   
   // Timestamps
   createdAt       DateTime @default(now())
@@ -64,6 +71,7 @@ model Job {
   @@index([createdAt])
   @@index([workLocation])
   @@index([jobType])
+  @@index([paymentStatus])
 }
 
 model ServiceRequest {
