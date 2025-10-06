@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { Resend } from 'resend';
+import { JobSubmissionConfirmationEmail } from '@/emails/JobSubmissionConfirmation';
 
 // Helper function to generate slug from job title
 function generateSlug(title: string, companyName: string): string {
@@ -125,6 +127,29 @@ export async function POST(request: NextRequest) {
         expiresAt,
       },
     });
+
+    // Send confirmation email (don't fail if email fails)
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        
+        await resend.emails.send({
+          from: 'ACP Market <jobs@acp-market.com>',
+          to: contactEmail,
+          subject: `Job Posted: ${jobTitle} at ${companyName}`,
+          react: JobSubmissionConfirmationEmail({
+            jobTitle,
+            companyName,
+            contactEmail,
+          }),
+        });
+        
+        console.log('Confirmation email sent to:', contactEmail);
+      } catch (emailError) {
+        // Log but don't fail the request if email fails
+        console.error('Failed to send confirmation email:', emailError);
+      }
+    }
 
     return NextResponse.json(
       {
