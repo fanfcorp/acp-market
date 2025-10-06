@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { Resend } from 'resend';
+import { createElement } from 'react';
 import { JobSubmissionConfirmationEmail } from '@/emails/JobSubmissionConfirmation';
 
 // Helper function to generate slug from job title
@@ -137,11 +138,11 @@ export async function POST(request: NextRequest) {
           from: 'ACP Market <jobs@acp-market.com>',
           to: contactEmail,
           subject: `Job Posted: ${jobTitle} at ${companyName}`,
-          react: <JobSubmissionConfirmationEmail
-            jobTitle={jobTitle}
-            companyName={companyName}
-            contactEmail={contactEmail}
-          />,
+          react: createElement(JobSubmissionConfirmationEmail, {
+            jobTitle,
+            companyName,
+            contactEmail,
+          }),
         });
         
         console.log('Confirmation email sent to:', contactEmail);
