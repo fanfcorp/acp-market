@@ -23,10 +23,7 @@ export default function Header() {
             <Link href="/" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
               Home
             </Link>
-            <Link href="#" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-              Browse All
-            </Link>
-            <Link href="#" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+            <Link href="/categories" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
               Categories
             </Link>
             <Link href="/leaderboard" className="text-gray-900 px-3 py-2 text-sm font-medium">
@@ -36,7 +33,7 @@ export default function Header() {
 
           {/* Right side buttons */}
           <div className="flex items-center space-x-4">
-            <button className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Submit ACP</button>
+            <a href="/submit-acp" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Submit ACP</a>
             <a href="/power-your-agents" className="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg text-sm font-medium flex items-center">
               <Zap className="w-4 h-4 mr-2" />
               Power Your Agents
