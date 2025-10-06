@@ -34,7 +34,7 @@ export default async function JobsPage() {
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Find roles in AI development, machine learning, product, and research at companies
-            building with AI, MCP, and cutting-edge technologies
+            building with AI, ACP, and cutting-edge technologies
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default async function JobsPage() {
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-gray-900">
-              Looking for AI/MCP talent? Reach{' '}
+              Looking for AI/ACP talent? Reach{' '}
               <span className="font-semibold">100,000+ monthly visitors</span>{' '}
               with this exact skill set
             </p>

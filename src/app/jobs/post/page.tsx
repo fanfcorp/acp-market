@@ -27,7 +27,7 @@ export default function PostJobPage() {
           <div className="space-y-2 text-sm text-gray-700">
             <div className="flex items-start gap-2">
               <span className="text-blue-600 mt-0.5">✓</span>
-              <span><strong>100,000+ monthly visitors</strong> interested in AI and MCP technologies</span>
+              <span><strong>100,000+ monthly visitors</strong> interested in AI and ACP technologies</span>
             </div>
             <div className="flex items-start gap-2">
               <span className="text-blue-600 mt-0.5">✓</span>

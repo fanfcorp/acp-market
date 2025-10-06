@@ -74,7 +74,7 @@ export const JobSubmissionConfirmationEmail: React.FC<JobSubmissionConfirmationE
                 Review Process
               </h3>
               <p style={{ fontSize: '14px', color: '#6b7280', margin: '0', lineHeight: '1.5' }}>
-                Our team will review your job posting to ensure it meets our guidelines and is relevant to the AI/MCP community.
+                Our team will review your job posting to ensure it meets our guidelines and is relevant to the AI/ACP community.
               </p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export const JobSubmissionConfirmationEmail: React.FC<JobSubmissionConfirmationE
                 30-Day Visibility
               </h3>
               <p style={{ fontSize: '14px', color: '#6b7280', margin: '0', lineHeight: '1.5' }}>
-                Your job will remain active for 30 days, reaching over 100,000+ monthly visitors interested in AI and MCP technologies.
+                Your job will remain active for 30 days, reaching over 100,000+ monthly visitors interested in AI and ACP technologies.
               </p>
             </div>
           </div>
