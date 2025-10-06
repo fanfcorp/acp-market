@@ -46,8 +46,8 @@ export default function PostJobForm() {
       if (response.ok) {
         setMessage({ type: 'success', text: 'Job posted successfully! Redirecting...' });
         setTimeout(() => {
-          router.push(`/jobs/${data.slug}`);
-        }, 2000);
+          router.push('/jobs/submitted');
+        }, 1500);
       } else {
         setMessage({ type: 'error', text: data.error || 'Something went wrong. Please try again.' });
       }
