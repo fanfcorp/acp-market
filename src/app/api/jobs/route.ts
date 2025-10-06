@@ -137,11 +137,11 @@ export async function POST(request: NextRequest) {
           from: 'ACP Market <jobs@acp-market.com>',
           to: contactEmail,
           subject: `Job Posted: ${jobTitle} at ${companyName}`,
-          react: JobSubmissionConfirmationEmail({
-            jobTitle,
-            companyName,
-            contactEmail,
-          }),
+          react: <JobSubmissionConfirmationEmail
+            jobTitle={jobTitle}
+            companyName={companyName}
+            contactEmail={contactEmail}
+          />,
         });
         
         console.log('Confirmation email sent to:', contactEmail);
