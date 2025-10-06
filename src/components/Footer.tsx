@@ -55,7 +55,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link href="/jobs" className="text-sm text-gray-600 hover:text-gray-900">
-                  Jobs in AI
+                  Future of Commerce Jobs
                 </Link>
               </li>
               <li>

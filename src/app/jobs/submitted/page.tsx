@@ -36,7 +36,7 @@ export default function JobSubmittedPage() {
               <div>
                 <h3 className="font-medium text-gray-900 mb-1">Review Process</h3>
                 <p className="text-sm text-gray-600">
-                  Our team will review your job posting to ensure it meets our guidelines and is relevant to the AI/ACP community.
+                  Our team will review your job posting to ensure it meets our guidelines and is relevant to the future of commerce community.
                 </p>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default function JobSubmittedPage() {
               <div>
                 <h3 className="font-medium text-gray-900 mb-1">30-Day Visibility</h3>
                 <p className="text-sm text-gray-600">
-                  Your job will remain active for 30 days, reaching over 100,000+ monthly visitors interested in AI and ACP technologies.
+                  Your job will remain active for 30 days, reaching over 100,000+ monthly visitors building the future of commerce.
                 </p>
               </div>
             </div>

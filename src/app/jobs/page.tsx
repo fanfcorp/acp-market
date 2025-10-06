@@ -31,11 +31,11 @@ export default async function JobsPage() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-            AI Jobs & Career Opportunities
+            Build the Future of Commerce
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Find roles in AI development, machine learning, product, and research at companies
-            building with AI, ACP, and cutting-edge technologies
+            Join innovative companies shaping the next generation of commerce with AI, ACP, and cutting-edge technologies.
+            Find roles in product, engineering, research, and strategy.
           </p>
         </div>
 
@@ -43,9 +43,9 @@ export default async function JobsPage() {
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-gray-900">
-              Looking for AI/ACP talent? Reach{' '}
+              Looking for talent shaping the future of commerce? Reach{' '}
               <span className="font-semibold">100,000+ monthly visitors</span>{' '}
-              with this exact skill set
+              building the next generation of AI-powered commerce
             </p>
           </div>
           <Link
