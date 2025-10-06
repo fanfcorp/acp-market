@@ -77,12 +77,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate and normalize URL format
+    let normalizedApplicationUrl = applicationUrl.trim();
+    
+    // Add https:// if no protocol is provided
+    if (!normalizedApplicationUrl.startsWith('http://') && !normalizedApplicationUrl.startsWith('https://')) {
+      normalizedApplicationUrl = 'https://' + normalizedApplicationUrl;
+    }
+    
     // Validate URL format
     try {
-      new URL(applicationUrl);
+      new URL(normalizedApplicationUrl);
     } catch {
       return NextResponse.json(
-        { error: 'Invalid application URL' },
+        { error: 'Invalid application URL. Please enter a valid URL (e.g., https://company.com/apply)' },
         { status: 400 }
       );
     }
@@ -105,7 +113,7 @@ export async function POST(request: NextRequest) {
         workLocation: workLocation || 'On-site',
         jobType: jobType || 'Full Time',
         salaryRange: salaryRange || null,
-        applicationUrl,
+        applicationUrl: normalizedApplicationUrl,
         description,
         requirements: requirements || null,
         benefits: benefits || null,

@@ -236,15 +236,15 @@ export default function PostJobForm() {
             <input
               id="applicationUrl"
               name="applicationUrl"
-              type="url"
-              placeholder="https://yourcompany.com/apply"
+              type="text"
+              placeholder="yourcompany.com/apply or https://yourcompany.com/apply"
               value={formData.applicationUrl}
               onChange={handleChange}
               required
               disabled={isSubmitting}
               className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:opacity-50"
             />
-            <p className="mt-1 text-xs text-gray-500">Where candidates should apply</p>
+            <p className="mt-1 text-xs text-gray-500">Where candidates should apply (https:// will be added automatically)</p>
           </div>
 
           <div>
