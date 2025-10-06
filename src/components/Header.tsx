@@ -37,9 +37,9 @@ export default function Header() {
           {/* Right side buttons */}
           <div className="flex items-center space-x-4">
             <a href="/submit-acp" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Submit ACP</a>
-            <a href="/power-your-agents" className="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg text-sm font-medium flex items-center">
+            <a href="/services" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center">
               <Zap className="w-4 h-4 mr-2" />
-              Power Your Agents
+              Get Started
             </a>
             <button className="p-2 text-gray-500 hover:text-gray-900" aria-label="Language">
               <Globe className="w-5 h-5" />

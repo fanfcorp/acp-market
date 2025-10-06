@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Link from "next/link";
-import { Search, Star } from "lucide-react";
+import { Search, Star, Zap } from "lucide-react";
 
 const sampleCards = [
   { name: "Bright Data", tag: "Official", stars: 1387 },
@@ -65,7 +66,38 @@ export default function Home() {
             </div>
           </section>
         ))}
+
+        {/* Services CTA */}
+        <section className="my-16">
+          <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center text-white">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-white/20 backdrop-blur-sm mb-6">
+              <Zap className="w-4 h-4" />
+              Professional Services
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Need Help Integrating ACP?
+            </h2>
+            <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
+              Our expert team can help you integrate ACP into your business with custom development, consulting, and ongoing support
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+              >
+                Get Started →
+              </Link>
+              <Link
+                href="/services#benefits"
+                className="inline-flex items-center justify-center px-8 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 transition-colors font-medium border border-white/20"
+              >
+                Learn More
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
+      <Footer />
     </div>
   );
 }

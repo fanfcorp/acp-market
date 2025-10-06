@@ -65,3 +65,30 @@ model Job {
   @@index([workLocation])
   @@index([jobType])
 }
+
+model ServiceRequest {
+  id              String   @id @default(cuid())
+  
+  // Contact Information
+  name            String
+  email           String
+  company         String?
+  phone           String?
+  
+  // Project Details
+  projectType     String   // Integration, Custom Development, Consulting, etc.
+  description     String   @db.Text
+  budget          String?
+  timeline        String?
+  
+  // Status
+  status          String   @default("new") // new, contacted, in-progress, completed
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}
