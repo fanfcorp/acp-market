@@ -7,12 +7,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1">
-            <div className="flex items-center mb-4">
+            <Link href="/" className="flex items-center mb-4 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 bg-gray-900 rounded-md flex items-center justify-center mr-3">
                 <span className="text-white text-sm font-bold">ACP</span>
               </div>
               <span className="text-xl font-bold text-gray-900">ACP Market</span>
-            </div>
+            </Link>
             <p className="text-sm text-gray-600">
               Powering the future of commerce with AI-driven automation and intelligent sales tools
             </p>

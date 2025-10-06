@@ -10,12 +10,12 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="flex-shrink-0 flex items-center">
+            <Link href="/" className="flex-shrink-0 flex items-center hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 bg-gray-900 rounded-md flex items-center justify-center mr-3">
                 <span className="text-white text-sm font-bold">ACP</span>
               </div>
               <span className="text-xl font-bold text-gray-900">ACP Market</span>
-            </div>
+            </Link>
           </div>
 
           {/* Navigation */}
