@@ -24,3 +24,44 @@ model WaitlistEntry {
   @@index([email])
   @@index([createdAt])
 }
+
+model Job {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  
+  // Job Details
+  jobTitle        String
+  companyName     String
+  companyLogoUrl  String?
+  location        String
+  workLocation    String   // Remote, On-site, Hybrid
+  jobType         String   // Full Time, Part Time, Contract, Internship
+  salaryRange     String?
+  applicationUrl  String
+  
+  // Job Content
+  description     String   @db.Text
+  requirements    String?  @db.Text
+  benefits        String?  @db.Text
+  
+  // Contact & Meta
+  contactEmail    String
+  companyWebsite  String?
+  tags            String[] // e.g., ["MCP", "AI", "LLM"]
+  
+  // Status & Publishing
+  status          String   @default("pending") // pending, approved, published, expired
+  featured        Boolean  @default(false)
+  expiresAt       DateTime?
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  publishedAt     DateTime?
+
+  @@index([slug])
+  @@index([status])
+  @@index([createdAt])
+  @@index([workLocation])
+  @@index([jobType])
+}

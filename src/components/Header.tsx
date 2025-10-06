@@ -26,8 +26,11 @@ export default function Header() {
             <Link href="/categories" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
               Categories
             </Link>
-            <Link href="/leaderboard" className="text-gray-900 px-3 py-2 text-sm font-medium">
+            <Link href="/leaderboard" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
               Leaderboard
+            </Link>
+            <Link href="/jobs" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+              Jobs in AI
             </Link>
           </nav>
 
