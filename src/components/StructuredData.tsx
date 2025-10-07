@@ -1,5 +1,6 @@
 interface ACPStructuredDataProps {
   type: 'website' | 'organization' | 'software' | 'collection' | 'itemList';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
 }
 
@@ -105,7 +106,7 @@ export function StructuredData({ type, data }: ACPStructuredDataProps) {
           "description": data.description,
           "url": data.url,
           "numberOfItems": data.items?.length || 0,
-          "itemListElement": data.items?.map((item: any, index: number) => ({
+          "itemListElement": data.items?.map((item: any, index: number) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
             "@type": "ListItem",
             "position": index + 1,
             "item": {
