@@ -30,18 +30,18 @@ function ACPServerCard({ server }: { server: {
   id: string;
   name: string;
   description: string;
-  logoUrl?: string;
+  logoUrl?: string | null;
   verified: boolean;
   featured: boolean;
   tier: string;
   tags: string[];
   stars: number;
   downloads: number;
-  githubUrl?: string;
-  website?: string;
+  githubUrl?: string | null;
+  website?: string | null;
   primaryCategory: {
     name: string;
-    color?: string;
+    color?: string | null;
   };
 } }) {
   const isPremium = server.tier === 'pro' || server.tier === 'featured';
