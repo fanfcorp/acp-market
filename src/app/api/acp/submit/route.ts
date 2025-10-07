@@ -237,9 +237,6 @@ export async function GET(request: NextRequest) {
 
     const submission = await prisma.aCPSubmission.findFirst({
       where,
-      include: {
-        acpServer: true
-      },
       orderBy: {
         createdAt: 'desc'
       }
