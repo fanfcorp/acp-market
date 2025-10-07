@@ -27,9 +27,9 @@ async function getCategories() {
 function CategoryCard({ category, count }: { category: {
   id: string;
   name: string;
-  description?: string;
-  icon?: string;
-  color?: string;
+  description?: string | null;
+  icon?: string | null;
+  color?: string | null;
   slug: string;
 }; count: number }) {
   return (
@@ -74,9 +74,9 @@ function CategoryCard({ category, count }: { category: {
 function CategorySection({ title, categories }: { title: string; categories: {
   id: string;
   name: string;
-  description?: string;
-  icon?: string;
-  color?: string;
+  description?: string | null;
+  icon?: string | null;
+  color?: string | null;
   slug: string;
   _count: { acpServers: number };
 }[] }) {
