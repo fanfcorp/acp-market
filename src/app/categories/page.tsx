@@ -1,8 +1,29 @@
 import Header from "@/components/Header";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { StructuredData } from "@/components/StructuredData";
+import { Metadata } from "next";
 
 export const revalidate = 60; // Revalidate every 60 seconds
+
+export const metadata: Metadata = {
+  title: "ACP Server Categories - Agentic Commerce Protocol Directory",
+  description: "Browse Agentic Commerce Protocol (ACP) server categories including Core Infrastructure, Experience & Coordination, and Vertical Economies. Find the perfect AI agent commerce tools for your needs.",
+  keywords: [
+    "ACP categories",
+    "Agentic Commerce Protocol categories", 
+    "AI agent commerce categories",
+    "ACP server categories",
+    "agentic commerce infrastructure",
+    "AI agent automation categories",
+    "commerce automation tools"
+  ],
+  openGraph: {
+    title: "ACP Server Categories - Agentic Commerce Protocol Directory",
+    description: "Browse Agentic Commerce Protocol (ACP) server categories including Core Infrastructure, Experience & Coordination, and Vertical Economies.",
+    type: "website",
+  },
+};
 
 async function getCategories() {
   const categories = await prisma.category.findMany({
@@ -118,6 +139,15 @@ export default async function CategoriesPage() {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950 min-h-screen">
+      <StructuredData 
+        type="itemList" 
+        data={{
+          name: "Agentic Commerce Protocol Server Categories",
+          description: "Complete directory of ACP server categories including Core Infrastructure, Experience & Coordination, and Vertical Economies",
+          url: "https://acp-market-mt2lloch9-francois-goupils-projects.vercel.app/categories",
+          items: categories
+        }} 
+      />
       <Header />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
@@ -130,10 +160,10 @@ export default async function CategoriesPage() {
         {/* Page header */}
         <div className="mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Browse by <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Category</span>
+            Browse Agentic Commerce Protocol <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Categories</span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mb-6">
-            Discover ACP servers organized by specialized categories. From core infrastructure to vertical-specific solutions, find the perfect agent for your needs.
+            Discover Agentic Commerce Protocol (ACP) servers organized by specialized categories. From core infrastructure to vertical-specific solutions, find the perfect AI agent commerce tools for your automation needs.
           </p>
           
           {/* Stats */}

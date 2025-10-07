@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Search, Star, Zap } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { StructuredData } from "@/components/StructuredData";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -115,24 +116,47 @@ export default async function Home() {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950 min-h-screen">
+      <StructuredData 
+        type="website" 
+        data={{
+          name: "ACP Market",
+          description: "The premier directory for Agentic Commerce Protocol servers and clients"
+        }} 
+      />
+      <StructuredData 
+        type="organization" 
+        data={{
+          name: "ACP Market",
+          description: "Agentic Commerce Protocol directory and marketplace"
+        }} 
+      />
+      <StructuredData 
+        type="itemList" 
+        data={{
+          name: "Featured Agentic Commerce Protocol Servers",
+          description: "Top-rated ACP servers for AI agent commerce automation",
+          url: "https://acp-market-mt2lloch9-francois-goupils-projects.vercel.app",
+          items: servers.slice(0, 10)
+        }} 
+      />
       <Header />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero */}
         <div className="mb-8">
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-            {servers.length} Servers · Updated: {new Date().toLocaleTimeString()}
+            {servers.length} Agentic Commerce Protocol Servers · Updated: {new Date().toLocaleTimeString()}
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">
-            Find The Best <span className="underline decoration-yellow-400">Agent Tools</span>
+            Discover Premium <span className="underline decoration-yellow-400">Agentic Commerce Protocol</span> Servers
           </h1>
           <p className="mt-3 text-gray-600 dark:text-gray-300 max-w-3xl">
-            Directory of awesome ACP servers and clients to connect AI agents with your favorite tools.
+            The premier directory for Agentic Commerce Protocol (ACP) servers and clients. Connect AI agents with payment systems, e-commerce platforms, and financial services. Find the best AI agent commerce automation tools and infrastructure.
           </p>
           <div className="mt-5 relative max-w-xl">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input 
               className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
-              placeholder="Search for ACP servers..." 
+              placeholder="Search Agentic Commerce Protocol servers, AI agent tools, payment systems..." 
             />
           </div>
           <div className="mt-4 flex flex-wrap gap-2 text-xs">
@@ -153,10 +177,10 @@ export default async function Home() {
 
         {/* Sections */}
         {[
-          { title: "Featured ACP Servers", servers: featuredServers.slice(0, 6), fallback: "No featured servers yet" },
-          { title: "Verified ACP Servers", servers: verifiedServers.slice(0, 6), fallback: "No verified servers yet" },
-          { title: "Top Rated ACP Servers", servers: topRatedServers.slice(0, 6), fallback: "No servers with ratings yet" },
-          { title: "Latest ACP Servers", servers: latestServers.slice(0, 6), fallback: "No servers submitted yet" },
+          { title: "Featured Agentic Commerce Protocol Servers", servers: featuredServers.slice(0, 6), fallback: "No featured ACP servers yet" },
+          { title: "Verified AI Agent Commerce Tools", servers: verifiedServers.slice(0, 6), fallback: "No verified commerce automation servers yet" },
+          { title: "Top Rated ACP Infrastructure", servers: topRatedServers.slice(0, 6), fallback: "No rated ACP servers yet" },
+          { title: "Latest Agentic Commerce Solutions", servers: latestServers.slice(0, 6), fallback: "No ACP servers submitted yet" },
         ].map((section, idx) => (
           <section key={section.title} className="mb-10">
             <div className="flex items-center justify-between mb-4">
@@ -196,10 +220,10 @@ export default async function Home() {
               Professional Services
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Need Help Integrating ACP?
+              Need Help with Agentic Commerce Protocol Integration?
             </h2>
             <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
-              Our expert team can help you integrate ACP into your business with custom development, consulting, and ongoing support
+              Our expert team can help you integrate Agentic Commerce Protocol (ACP) into your AI agent workflows with custom development, consulting, and ongoing support for AI agent commerce automation
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
