@@ -233,7 +233,7 @@ export async function GET(request: NextRequest) {
 
     const where = submissionId 
       ? { id: submissionId }
-      : { submitterEmail: email };
+      : { submitterEmail: email as string };
 
     const submission = await prisma.aCPSubmission.findFirst({
       where,
