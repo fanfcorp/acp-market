@@ -216,7 +216,7 @@ export default function SearchPage() {
     if (query || category) {
       search(query, category);
     }
-  }, []);
+  }, [query, category]);
 
   return (
     <div className="bg-gray-50 dark:bg-gray-950 min-h-screen">

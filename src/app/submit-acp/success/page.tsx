@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import { CheckCircle, Clock, Mail, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { Suspense } from "react";
 
 function SuccessContent({ searchParams }: { searchParams: { session_id?: string } }) {
@@ -55,7 +56,7 @@ function SuccessContent({ searchParams }: { searchParams: { session_id?: string 
                 <div className="ml-4">
                   <h3 className="font-medium text-gray-900">Email Notification</h3>
                   <p className="text-gray-600 mt-1">
-                    We'll send you an email once your ACP is approved and live on the directory.
+                    We&apos;ll send you an email once your ACP is approved and live on the directory.
                   </p>
                 </div>
               </div>

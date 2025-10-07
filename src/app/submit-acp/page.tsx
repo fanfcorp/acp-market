@@ -237,7 +237,7 @@ export default function SubmitAcpPage() {
                 What happens if my submission is rejected?
               </h3>
               <p className="text-gray-600">
-                We'll provide detailed feedback on why your submission was rejected and suggestions for improvement. You can resubmit after making the necessary changes.
+                We&apos;ll provide detailed feedback on why your submission was rejected and suggestions for improvement. You can resubmit after making the necessary changes.
               </p>
             </div>
 

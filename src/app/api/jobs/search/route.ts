@@ -13,7 +13,19 @@ export async function GET(request: NextRequest) {
     const offset = parseInt(searchParams.get('offset') || '0');
 
     // Build where clause
-    const where: any = {
+    const where: {
+      status: string;
+      OR?: Array<{
+        jobTitle?: { contains: string; mode: string };
+        companyName?: { contains: string; mode: string };
+        description?: { contains: string; mode: string };
+        tags?: { has: string } | { hasSome: string[] };
+      }>;
+      location?: { contains: string; mode: string };
+      jobType?: string;
+      workLocation?: string;
+      tier?: string;
+    } = {
       status: 'published'
     };
 

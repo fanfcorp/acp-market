@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { Search, Star, Zap, Github, Globe } from "lucide-react";
+import { Search, Star, Zap } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 
 export const revalidate = 60; // Revalidate every 60 seconds
