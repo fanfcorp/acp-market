@@ -25,7 +25,7 @@ export default function PostJobForm() {
     contactEmail: '',
     companyWebsite: '',
     tags: [] as string[],
-    listingType: 'standard' as 'standard' | 'featured',
+    listingType: 'standard' as 'standard' | 'premium' | 'featured',
   });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -397,6 +397,68 @@ export default function PostJobForm() {
                     <p className="text-sm text-gray-700 mb-4">
                       Your job will appear in the main job feed
                     </p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-0.5">✓</span>
+                        <span>Standard visibility in job listings</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-0.5">✓</span>
+                        <span>30-day listing duration</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-0.5">✓</span>
+                        <span>Basic company logo support</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            {/* Premium Listing */}
+            <label className={`block cursor-pointer ${formData.listingType === 'premium' ? 'ring-2 ring-green-600' : ''}`}>
+              <div className="bg-gradient-to-br from-green-50 to-blue-50 border-2 border-green-200 rounded-lg p-6">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="radio"
+                    name="listingType"
+                    value="premium"
+                    checked={formData.listingType === 'premium'}
+                    onChange={handleChange}
+                    className="mt-1"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-baseline gap-2 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900">Premium Listing</h3>
+                      <span className="text-lg">⭐</span>
+                    </div>
+                    <div className="text-2xl font-bold text-green-600 mb-2">$89 for 30 days</div>
+                    <p className="text-sm text-gray-700 mb-4">
+                      Enhanced visibility with premium features
+                    </p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">✓</span>
+                        <span>Premium positioning in listings</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">✓</span>
+                        <span>⭐ PREMIUM badge</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">✓</span>
+                        <span>Highlighted background</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">✓</span>
+                        <span>2x more views on average</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">✓</span>
+                        <span>Enhanced company profile</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -419,26 +481,34 @@ export default function PostJobForm() {
                       <h3 className="text-lg font-semibold text-gray-900">Featured Listing</h3>
                       <span className="text-lg">✨</span>
                     </div>
-                    <div className="text-2xl font-bold text-purple-600 mb-2">$129 for 30 days</div>
+                    <div className="text-2xl font-bold text-purple-600 mb-2">$149 for 30 days</div>
                     <p className="text-sm text-gray-700 mb-4">
-                      Highlighted at the top with premium visibility for 30 days
+                      Maximum visibility with all premium features
                     </p>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <ul className="space-y-1 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <span className="text-purple-600 mt-0.5">✓</span>
-                        <span>Premium visibility at top of listings</span>
+                        <span>Top placement in job listings</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-purple-600 mt-0.5">✓</span>
-                        <span>Highlighted with special badge</span>
+                        <span>FEATURED badge + premium styling</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-purple-600 mt-0.5">✓</span>
-                        <span>Featured in newsletter</span>
+                        <span>Featured in weekly newsletter</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-purple-600 mt-0.5">✓</span>
                         <span>3x more views on average</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-0.5">✓</span>
+                        <span>Custom banner image support</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-0.5">✓</span>
+                        <span>Priority customer support</span>
                       </li>
                     </ul>
                   </div>

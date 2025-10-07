@@ -52,10 +52,25 @@ model Job {
   // Status & Publishing
   status          String   @default("pending") // pending, payment_pending, approved, published, expired
   featured        Boolean  @default(false)
+  verified        Boolean  @default(false) // Company verified status
+  tier            String   @default("standard") // standard, premium, featured
   expiresAt       DateTime?
   
+  // Premium Features
+  urgent          Boolean  @default(false) // Urgent hiring badge
+  highlighted     Boolean  @default(false) // Highlighted background
+  bannerImage     String?  // Custom banner for premium jobs
+  videoIntro      String?  // Video introduction URL
+  customProfile   Boolean  @default(false) // Custom company profile
+  
+  // Engagement Metrics
+  views           Int      @default(0)
+  clicks          Int      @default(0)
+  applications    Int      @default(0)
+  bookmarks       Int      @default(0)
+  
   // Payment
-  listingType     String   @default("standard") // standard, featured
+  listingType     String   @default("standard") // standard, premium, featured
   paymentStatus   String   @default("unpaid") // unpaid, paid, refunded
   paymentAmount   Int?     // Amount in cents
   stripeSessionId String?
@@ -72,6 +87,11 @@ model Job {
   @@index([workLocation])
   @@index([jobType])
   @@index([paymentStatus])
+  @@index([featured])
+  @@index([verified])
+  @@index([tier])
+  @@index([urgent])
+  @@index([publishedAt])
 }
 
 model ServiceRequest {
@@ -97,6 +117,213 @@ model ServiceRequest {
   updatedAt       DateTime @updatedAt
 
   @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// Category hierarchy for ACP servers
+model Category {
+  id              String   @id @default(cuid())
+  name            String   @unique
+  slug            String   @unique
+  description     String?  @db.Text
+  icon            String?  // Icon name or emoji
+  color           String?  // Hex color code
+  parentId        String?  // For subcategories
+  sortOrder       Int      @default(0)
+  
+  // Hierarchy
+  parent          Category? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children        Category[] @relation("CategoryHierarchy")
+  
+  // Relationships
+  acpServers      ACPServer[]
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([slug])
+  @@index([parentId])
+  @@index([sortOrder])
+}
+
+// ACP Server/Agent entries
+model ACPServer {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  
+  // Basic Information
+  name            String
+  description     String   @db.Text
+  website         String?
+  githubUrl       String?
+  logoUrl         String?
+  
+  // Categorization
+  primaryCategoryId String
+  primaryCategory   Category @relation(fields: [primaryCategoryId], references: [id])
+  sourceCategory    String?  // Original category from dataset
+  
+  // Metadata
+  tags            String[] // e.g., ["payments", "mlops", "risk", "api", "agentinfra"]
+  protocolSupport String[] // e.g., ["ACP v0.3", "MCP", "LangGraph", "OpenDevin"]
+  
+  // Submission & Ownership
+  submitterEmail  String?  // Email of person who submitted
+  submitterName   String?  // Name of person who submitted
+  submitterCompany String? // Company of submitter
+  contactEmail    String?  // Contact email for the ACP
+  
+  // Status & Approval
+  status          String   @default("pending") // pending, approved, rejected, active, deprecated, beta, coming-soon
+  featured        Boolean  @default(false)
+  verified        Boolean  @default(false)
+  tier            String   @default("free") // free, pro, featured
+  approvedAt      DateTime?
+  rejectedAt      DateTime?
+  rejectionReason String?  @db.Text
+  
+  // Metrics & Engagement
+  stars           Int      @default(0)
+  downloads       Int      @default(0)
+  views           Int      @default(0)
+  clicks          Int      @default(0)
+  upvotes         Int      @default(0)
+  
+  // Premium Features
+  bannerImage     String?  // Custom banner image
+  screenshots     String[] // Array of screenshot URLs
+  videoDemo       String?  // Video demo URL
+  customProfile   Boolean  @default(false) // Has custom profile page
+  leadGeneration  Boolean  @default(false) // Can collect leads
+  analyticsEnabled Boolean @default(false) // Has analytics access
+  
+  // Content
+  documentation   String?  @db.Text
+  examples        String?  @db.Text
+  installation    String?  @db.Text
+  apiEndpoint     String?  // Main API endpoint
+  apiKeyRequired  Boolean  @default(false)
+  
+  // Relationships
+  analytics       ACPAnalytics[]
+  reviews         ACPReview[]
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  lastUpdated     DateTime @default(now())
+
+  @@index([slug])
+  @@index([primaryCategoryId])
+  @@index([status])
+  @@index([featured])
+  @@index([verified])
+  @@index([tier])
+  @@index([stars])
+  @@index([createdAt])
+  @@index([submitterEmail])
+}
+
+// ACP Submission tracking
+model ACPSubmission {
+  id              String   @id @default(cuid())
+  
+  // Submission Details
+  acpServerId     String?  // Link to created ACPServer if approved
+  status          String   @default("pending") // pending, approved, rejected
+  
+  // Submitter Information
+  submitterName   String
+  submitterEmail  String
+  submitterCompany String?
+  
+  // ACP Information
+  name            String
+  description     String   @db.Text
+  website         String?
+  githubUrl       String?
+  categoryId      String
+  tags            String[]
+  protocolSupport String[]
+  
+  // Premium Tier Selection
+  selectedTier    String   @default("free") // free, pro, featured
+  paymentStatus   String   @default("unpaid") // unpaid, paid, refunded
+  
+  // Payment (for premium tiers)
+  stripeSessionId String?
+  stripePaymentId String?
+  amount          Int?     // Amount in cents
+  
+  // Review & Approval
+  reviewedBy      String?  // Admin user ID
+  reviewedAt      DateTime?
+  rejectionReason String?  @db.Text
+  notes           String?  @db.Text
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([status])
+  @@index([submitterEmail])
+  @@index([selectedTier])
+  @@index([createdAt])
+}
+
+// Analytics for premium ACP servers
+model ACPAnalytics {
+  id              String   @id @default(cuid())
+  acpServerId     String
+  acpServer       ACPServer @relation(fields: [acpServerId], references: [id], onDelete: Cascade)
+  
+  // Metrics
+  date            DateTime
+  views           Int      @default(0)
+  clicks          Int      @default(0)
+  downloads       Int      @default(0)
+  leads           Int      @default(0) // Contact form submissions
+  
+  // Referrer tracking
+  referrerDomain  String?
+  userAgent       String?
+  ipAddress       String?
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+
+  @@index([acpServerId])
+  @@index([date])
+  @@unique([acpServerId, date, referrerDomain])
+}
+
+// User reviews/ratings for ACP servers
+model ACPReview {
+  id              String   @id @default(cuid())
+  acpServerId     String
+  acpServer       ACPServer @relation(fields: [acpServerId], references: [id], onDelete: Cascade)
+  
+  // Reviewer
+  reviewerName    String
+  reviewerEmail   String?
+  reviewerCompany String?
+  
+  // Review
+  rating          Int      // 1-5 stars
+  title           String
+  content         String   @db.Text
+  
+  // Status
+  status          String   @default("pending") // pending, approved, rejected
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([acpServerId])
+  @@index([rating])
   @@index([status])
   @@index([createdAt])
 }
