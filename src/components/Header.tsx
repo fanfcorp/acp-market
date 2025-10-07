@@ -30,7 +30,7 @@ export default function Header() {
               Leaderboard
             </Link>
             <Link href="/jobs" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-              Future of Commerce
+              Job Ads
             </Link>
           </nav>
 

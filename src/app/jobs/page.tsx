@@ -35,7 +35,7 @@ export default async function JobsPage() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-            Build the Future of Commerce
+            Build the Job Ads
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Join innovative companies shaping the next generation of commerce with AI, ACP, and cutting-edge technologies.
