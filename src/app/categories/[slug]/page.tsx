@@ -3,6 +3,7 @@ import { ChevronRight, Star, Github, Globe, Tag } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ServerLogo } from "@/components/ServerLogo";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -62,18 +63,11 @@ function ACPServerCard({ server }: { server: {
     }`}>
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          {server.logoUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img 
-              src={server.logoUrl} 
-              alt={`${server.name} logo`}
-              className="w-12 h-12 rounded-lg object-contain bg-gray-50 dark:bg-gray-800 p-2"
-            />
-          ) : (
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">
-              {server.name.charAt(0)}
-            </div>
-          )}
+          <ServerLogo 
+            logoUrl={server.logoUrl}
+            name={server.name}
+            size="lg"
+          />
           <div>
             <div className="flex items-center gap-2">
               <h3 className="font-semibold text-gray-900 dark:text-white">{server.name}</h3>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Search, Star, Zap } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { StructuredData } from "@/components/StructuredData";
+import { ServerLogo } from "@/components/ServerLogo";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -56,18 +57,11 @@ function ACPServerCard({ server }: { server: {
     }`}>
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          {server.logoUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img 
-              src={server.logoUrl} 
-              alt={`${server.name} logo`}
-              className="w-8 h-8 rounded object-contain bg-gray-50 dark:bg-gray-800 p-1"
-            />
-          ) : (
-            <div className="w-8 h-8 rounded bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
-              {server.name.charAt(0)}
-            </div>
-          )}
+          <ServerLogo 
+            logoUrl={server.logoUrl}
+            name={server.name}
+            size="md"
+          />
           <div>
             <div className="flex items-center gap-1">
               <div className="font-medium text-gray-900 dark:text-white text-sm">{server.name}</div>
