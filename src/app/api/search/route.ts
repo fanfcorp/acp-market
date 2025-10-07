@@ -10,15 +10,7 @@ export async function GET(request: NextRequest) {
     const offset = parseInt(searchParams.get('offset') || '0');
 
     // Build where clause
-    const where: {
-      status: string;
-      OR?: Array<{
-        name?: { contains: string; mode: string };
-        description?: { contains: string; mode: string };
-        tags?: { has: string } | { hasSome: string[] };
-      }>;
-      primaryCategory?: { slug: string };
-    } = {
+    const where: any = {
       status: 'active'
     };
 
