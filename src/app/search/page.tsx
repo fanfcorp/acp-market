@@ -168,7 +168,7 @@ function ACPServerCard({ server }: { server: ACPServer }) {
   );
 }
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
   const [category, setCategory] = useState(searchParams.get('category') || '');
@@ -334,5 +334,23 @@ export default function SearchPage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-gray-50 dark:bg-gray-950 min-h-screen">
+        <Header />
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center py-10">
+            <div className="text-gray-500 dark:text-gray-400">Loading search...</div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    }>
+      <SearchPageContent />
+    </Suspense>
   );
 }
