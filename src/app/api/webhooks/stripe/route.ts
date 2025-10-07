@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
                 .replace(/[^a-z0-9\s-]/g, '')
                 .replace(/\s+/g, '-')
                 .replace(/-+/g, '-')
-                .trim('-');
+                .replace(/^-+|-+$/g, '');
 
               // Check if slug already exists
               let finalSlug = slug;
