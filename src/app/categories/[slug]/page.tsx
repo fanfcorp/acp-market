@@ -219,7 +219,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
               <div className="flex items-center gap-2 mt-2">
                 <div 
                   className="w-3 h-3 rounded-full" 
-                  style={{ backgroundColor: category.color }}
+                  style={{ backgroundColor: category.color || '#3b82f6' }}
                 ></div>
                 <span className="text-sm text-gray-500 dark:text-gray-400">
                   {category._count.acpServers} ACP servers
