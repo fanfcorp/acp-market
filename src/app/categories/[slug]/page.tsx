@@ -40,7 +40,7 @@ function ACPServerCard({ server }: { server: {
   id: string;
   name: string;
   description: string;
-  logoUrl?: string;
+  logoUrl?: string | null;
   verified: boolean;
   featured: boolean;
   tier: string;
@@ -48,8 +48,8 @@ function ACPServerCard({ server }: { server: {
   protocolSupport: string[];
   stars: number;
   downloads: number;
-  githubUrl?: string;
-  website?: string;
+  githubUrl?: string | null;
+  website?: string | null;
 } }) {
   const isPremium = server.tier === 'pro' || server.tier === 'featured';
   const isFeatured = server.featured || server.tier === 'featured';
